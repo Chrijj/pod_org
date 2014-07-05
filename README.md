@@ -7,6 +7,7 @@
   - move all files in a given folder
 
  # second stage
+  - copy files to an archive before moving
   - do this accross multiple folders
 
  # third stage 
@@ -14,6 +15,3 @@
 
  # forth stage
   - do this for files in selected folders only
-
-  # fifth stage
-  - also copy files
