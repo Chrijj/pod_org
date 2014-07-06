@@ -15,3 +15,12 @@
 
  # forth stage
   - do this for files in selected folders only
+
+ # fifth stage
+  - system preferences stored external to the file
+
+ # sixth stage
+  - basic gui
+
+ # seventh stage (maybe)
+  - mac support
