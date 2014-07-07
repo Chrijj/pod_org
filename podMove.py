@@ -38,8 +38,15 @@ podcastDir = r'C:/Users/Chrijj/Desktop/python/pod_org/'
 for file in os.listdir(podcastDir):
 	if str(file)[-4:] == ".mp3":
 		source = podcastDir + str(file)
-		destination = podcastDir + "zeman/" + str(file)
-		shutil.move(source, destination)
-		print str(file) + 'moved from', source, 'to', destination
+		moveDest = podcastDir + "zeman/" + str(file)
+		copyDest = podcastDir + "zemanCopy/" + str(file)
+
+
+		if str(file)[0] == 'c':
+			shutil.copyfile(source, copyDest)
+		else:
+			shutil.copy2(source, copyDest)
+		shutil.move(source, moveDest)
+		print str(file) + 'moved from: \n', source, 'to: \n', moveDest, 'but not before being copied to:\n', copyDest
 
 
