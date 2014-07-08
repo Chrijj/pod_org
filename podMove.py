@@ -8,6 +8,44 @@ import shutil
 import os
 import time
 
+podcastDir = r'C:/Users/Chrijj/Desktop/python/pod_org/'
+
+for file in os.listdir(podcastDir):
+	if str(file)[-4:] == ".mp3":
+		if os.path.getmtime(file) + (24 * 60 * 60) >= time.time():
+			source = podcastDir + str(file)
+			moveDest = podcastDir + "zeman/" + str(file)
+			copyDest = podcastDir + "zemanCopy/" + str(file)
+
+			shutil.copy2(source, copyDest)
+			shutil.move(source, moveDest)
+
+			print str(file)
+
+			
+
+# 		if str(file)[0] == 'c':
+# 			shutil.copyfile(source, copyDest)
+# 		else:
+# 			shutil.copy2(source, copyDest)
+			
+# 		shutil.move(source, moveDest)
+# 		print str(file) + 'moved from: \n', source, 'to: \n', moveDest, 'but not before being copied to:\n', copyDest
+
+
+# 	#print "Modification time:", os.stat(file).st_mtime 
+# 	#print os.path.getmtime(file)
+# 	lemon = os.path.getmtime(file)
+# 	if lemon + (24 * 60 * 60) >= time.time():
+# 		print str(file)
+
+
+# print "***"
+# print time.time()
+
+
+
+
 # source = r'C:/Users/Chrijj/Desktop/python/pod_org/testFile2.txt'
 # destination = r'C:/Users/Chrijj/Desktop/python/pod_org/zeman/testFile2.txt'
 # shutil.move(source, destination)
@@ -32,21 +70,3 @@ import time
 # print time.strftime('%Y-%m-%d %H:%M', time.localtime())
 
 ############ FILE MOVING OF SELELCTED FILE TYPES WORKING
-
-podcastDir = r'C:/Users/Chrijj/Desktop/python/pod_org/'
-
-for file in os.listdir(podcastDir):
-	if str(file)[-4:] == ".mp3":
-		source = podcastDir + str(file)
-		moveDest = podcastDir + "zeman/" + str(file)
-		copyDest = podcastDir + "zemanCopy/" + str(file)
-
-
-		if str(file)[0] == 'c':
-			shutil.copyfile(source, copyDest)
-		else:
-			shutil.copy2(source, copyDest)
-		shutil.move(source, moveDest)
-		print str(file) + 'moved from: \n', source, 'to: \n', moveDest, 'but not before being copied to:\n', copyDest
-
-
