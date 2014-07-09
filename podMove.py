@@ -10,17 +10,25 @@ import time
 
 podcastDir = r'C:/Users/Chrijj/Desktop/python/pod_org/'
 
-for file in os.listdir(podcastDir):
-	if str(file)[-4:] == ".mp3":
-		if os.path.getmtime(file) + (24 * 60 * 60) >= time.time():
-			source = podcastDir + str(file)
-			moveDest = podcastDir + "zeman/" + str(file)
-			copyDest = podcastDir + "zemanCopy/" + str(file)
 
-			shutil.copy2(source, copyDest)
-			shutil.move(source, moveDest)
+#for root, dirs, files in os.walk(podcastDir):
+    #print root
+    #print dirs
+    #print files
 
-			print str(file)
+for dir in os.listdir(podcastDir):
+	if os.path.isdir(dir):
+		for file in os.listdir(podcastDir + str(dir)):
+			if str(file)[-4:] == ".mp3":
+				if os.path.getmtime(podcastDir + "/" + dir + "/" + file) + (24 * 60 * 60) >= time.time():
+					# source = podcastDir + str(file)
+					# moveDest = podcastDir + "zeman/" + str(file)
+					# copyDest = podcastDir + "zemanCopy/" + str(file)
+
+					# shutil.copy2(source, copyDest)
+					# shutil.move(source, moveDest)
+					print dir
+					print str(file)
 
 			
 
