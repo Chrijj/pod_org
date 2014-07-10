@@ -3,6 +3,9 @@
  - archive old podcasts away
  - delete selected podcasts
 
+ # troublesome factors:
+  - trying to write to connected galaxy s . . .
+  
  # Notes
   - shutil.copy2 apparently keeps more of the meta data than .copyfile
   - didn't notice any loss in the files I tested but safer to use .copy2 for now
@@ -32,3 +35,6 @@
 
   # eight stage (this are getting arbitrary now)
   - dynamic folder support for if phone is not the expected drive when connected
+
+  # ninth stage
+  - rename files using metadata / web sraped information when the filename is questionable or not useful
