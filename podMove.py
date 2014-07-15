@@ -8,27 +8,46 @@ import shutil
 import os
 import time
 
-podcastDir = r'C:/Users/Chrijj/Desktop/python/pod_org/'
-
+#podcastDir = r'C:/Users/Chrijj/Desktop/python/pod_org/'
+podcastDir = r'C:/Users/Chrijj/Downloads/gPodder/Downloads/'
 
 #for root, dirs, files in os.walk(podcastDir):
     #print root
     #print dirs
     #print files
 
+moveDestBase = r'C:/Users/Chrijj/Desktop/New Podcasts/'
+copyDestBase = r'C:/Users/Chrijj/Desktop/python/pod_org/archive/'
+
+def ensure_dir(f):
+    d = os.path.dirname(f)
+    if not os.path.exists(d):
+        os.makedirs(d)
+
 for dir in os.listdir(podcastDir):
-	if os.path.isdir(dir):
+	if os.path.isdir(podcastDir + dir):
 		for file in os.listdir(podcastDir + str(dir)):
 			if str(file)[-4:] == ".mp3":
-				if os.path.getmtime(podcastDir + "/" + dir + "/" + file) + (24 * 60 * 60) >= time.time():
-					# source = podcastDir + str(file)
+				if os.path.getmtime(podcastDir + dir + "/" + file) + (24 * 60 * 60) >= time.time():
+					source = podcastDir + dir + "/" + file
 					# moveDest = podcastDir + "zeman/" + str(file)
 					# copyDest = podcastDir + "zemanCopy/" + str(file)
+					# copyDest = "/mnt/sdcard/Music/" + str(file)
 
-					# shutil.copy2(source, copyDest)
-					# shutil.move(source, moveDest)
+					moveDest = moveDestBase + str(dir) + '/'
+					ensure_dir(moveDestBase + str(dir) + '/')
+					copyDest = copyDestBase + str(dir) + '/'
+					ensure_dir(copyDestBase + str(dir) + '/')
+
+					moveDest += str(file)
+					copyDest += str(file)
+
+					shutil.copy2(source, copyDest)
+					shutil.move(source, moveDest)
+
 					print dir
 					print str(file)
+
 
 			
 
@@ -38,7 +57,7 @@ for dir in os.listdir(podcastDir):
 # 			shutil.copy2(source, copyDest)
 			
 # 		shutil.move(source, moveDest)
-# 		print str(file) + 'moved from: \n', source, 'to: \n', moveDest, 'but not before being copied to:\n', copyDest
+# 		print str(file) + 'moved from: /n', source, 'to: /n', moveDest, 'but not before being copied to:/n', copyDest
 
 
 # 	#print "Modification time:", os.stat(file).st_mtime 
